@@ -11,8 +11,8 @@ fun main(args: Array<String>) {
         }
     }
     File(".").walk()
-            .filter {
-                it.isFile && it.extension == "png"
+            .filter { file ->
+                file.isFile && file.extension == "png"
             }.map { file ->
                 FilePic(file, ImageIO.read(file))
             }.filter { data ->
