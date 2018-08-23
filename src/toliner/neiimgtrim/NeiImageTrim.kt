@@ -19,8 +19,8 @@ fun main(args: Array<String>) {
                 data.image.width == 854 && data.image.height == 480
             }.flatMap { data ->
                 sequenceOf(
-                        FilePic(data.file, data.image.getSubimage(304, 110, 240, 120)),
-                        FilePic(data.file, data.image.getSubimage(304, 240, 240, 120))
+                        data.copy(image = data.image.getSubimage(304, 110, 240, 120)),
+                        data.copy(image = data.image.getSubimage(304, 240, 240, 120))
                 )
             }.forEachIndexed { index, data ->
                 data.image.flush()
