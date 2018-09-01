@@ -10,6 +10,7 @@ fun main(args: Array<String>) {
             mkdir()
         }
     }
+    val blankImage = ImageIO.read(ClassLoader.getSystemResource("blank.png"))
     File(".").walk()
             .filter { file ->
                 file.isFile && file.extension == "png"
@@ -23,8 +24,15 @@ fun main(args: Array<String>) {
                         FilePic(File("$fileName-0.png"), data.image.getSubimage(304, 110, 240, 120)),
                         FilePic(File("$fileName-1.png"), data.image.getSubimage(304, 240, 240, 120))
                 )
-            }.filter {
-                !it.file.exists()
+            }.filter { data ->
+                !data.file.exists()
+            }.filter { data ->
+                data.image.flush()
+                (0 until data.image.width).any { x ->
+                    (0 until data.image.height).any { y ->
+                        data.image.getRGB(x, y) != blankImage.getRGB(x, y)
+                    }
+                }
             }.forEach { data ->
                 data.image.flush()
                 data.file.createNewFile()
