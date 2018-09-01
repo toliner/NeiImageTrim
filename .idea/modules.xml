@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/NeiImagaTrim.iml" filepath="$PROJECT_DIR$/NeiImagaTrim.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NeiImageTrim.iml" filepath="$PROJECT_DIR$/NeiImageTrim.iml" />
     </modules>
   </component>
 </project>
